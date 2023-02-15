@@ -3,16 +3,17 @@ import Header from '../Header';
 import SideNavBar from '../SideNavBar';
 import './App.scss';
 
+
 import React from 'react'
-import Section from '../Sectrion';
+import Home from '../Home/Home';
 
 const App = () => {
   return (
     <div>
     <Header/>
     <SideNavBar/>
+    <Home/>
     <Footer/>
-    <Section/>
     </div>
   )
 }
