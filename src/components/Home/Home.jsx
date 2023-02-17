@@ -1,9 +1,12 @@
+
+
 import React from "react";
 import Section from "../Sections";
 import styles from './Home.module.scss';
 const Home = () => {
+  
+
   return (
-    
       <div className={styles.wraper}>
         <Section title="One"
         description="One of the few things you completely control on this World is your mind"
