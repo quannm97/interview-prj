@@ -1,33 +1,30 @@
 import React, { useState } from "react";
+import { Provider, useSelector } from "react-redux";
 import { Fade } from "react-reveal";
+import { selectTrains} from "../../features/trainSlice/trainSlice";
+import { trainStore } from "../../store/trainStore";
 import styles from "./Header.module.scss";
+
+
 const Header = () => {
   const [navBarOpen, setnavBarOpen] = useState(false);
-
+  const trains = useSelector(selectTrains);
+  console.log(trains);
+  
   const handleShowHideNavBar = (e) =>{
     setnavBarOpen(!navBarOpen)
   };
   return (
+    
+
     <div className={styles.wraper}>
       <a href="">
         <img src="/LogoMakr2.png" alt="" />
       </a>
       <div className={styles.menu} >
-        <button className="btn" href="">
-          Link1
-        </button>
-        <button className="btn" href="">
-          Link2
-        </button>
-        <button className="btn" href="">
-          Link3
-        </button>
-        <button className="btn" href="">
-          Link4
-        </button>
-        <button className="btn" href="">
-          Link5
-        </button>
+        {trains && trains.map((train,index)=>(
+          <a key={index} className="btn" href="">{train}</a>
+        ))}
       </div>
       <div className={styles.rightMenu}>
         <button className="btn" href="">
@@ -74,6 +71,7 @@ const Header = () => {
       </div>
       </Fade>
     </div>
+   
   );
 };
 

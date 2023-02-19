@@ -12,7 +12,7 @@
   .menu {
     display: flex;
     align-items: center;
-    button {
+    a {
       font-weight: 600;
       text-transform: uppercase;
       padding: 0 10px;
@@ -21,7 +21,7 @@
       color: white;
       
     }
-    button:hover{
+    a:hover{
       color: #cba95f;
     }
     @media (max-width: 768px) {
