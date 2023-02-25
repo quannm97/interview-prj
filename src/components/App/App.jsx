@@ -6,15 +6,16 @@ import './App.scss';
 
 import React from 'react'
 import Home from '../Home/Home';
+import SignUp from '../../pages/SignUp/SignUp';
 
 const App = () => {
   return (
+    
     <div>
       
-    <Header/>
-    <Home/>
-    <Footer/>
+    <Home></Home>
     </div>
+    
   )
 }
 

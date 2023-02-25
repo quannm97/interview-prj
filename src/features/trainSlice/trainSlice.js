@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState= {trains:["Push up", "Pull up","Pull up 2","Pull up 3"]}
+
 
 const trainSlide = createSlice({
     name:'train',
-    initialState,
+    initialState:{trains:["Upper Body", "Full Body","Skill","Cardio"]},
     reducers:{}
 })
 
