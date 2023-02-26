@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Provider, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { Fade } from "react-reveal";
 import { selectTrains} from "../../features/trainSlice/trainSlice";
-import { trainStore } from "../../store/trainStore";
 import styles from "./Header.module.scss";
 
 

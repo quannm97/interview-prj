@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux';
 import * as ROUTES from '../../constants/routes.js';
 
 const SignUp = () => {
@@ -12,6 +13,7 @@ const SignUp = () => {
   const [formData, setFormData] = useState({ ...INITIAL_STATE });
   const [isShowPassword, setIsShowPassword] = useState("");
   
+  const { currentUser } = useSelector( state => state.user)
 
   const isInvalid=formData.passwordOne !== formData.passwordTwo||
   formData.passwordOne === ''||
