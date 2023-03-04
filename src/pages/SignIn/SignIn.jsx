@@ -40,16 +40,16 @@ const SignIn = () => {
   };
   return (
     <div className="signIn-background">
-    <div className="signUp-container">
+    <div className="signIn-container">
       <div className="form-slogan">
-        <h2 className="col-12 text-signUp">signUp to account</h2>
-        <p className="col-12 signUp-slogan">
+        <h2 className="col-12 text-signIn">Sign in to account</h2>
+        <p className="col-12 signIn-slogan">
           Key to sucess is the discepline and the method. One makes you a man
           and the other turn you into a Beast.
         </p>
       </div>
-      <form className="signUp-content" onSubmit={handleSubmit}>
-        <div className="col-12 form-group signUp-input">
+      <form className="signIn-content" onSubmit={handleSubmit}>
+        <div className="col-12 form-group signIn-input">
           <input
             type="text"
             name="email"
@@ -60,7 +60,7 @@ const SignIn = () => {
             className="form-control"
           />
         </div>
-        <div className="col-12 form-group signUp-input">
+        <div className="col-12 form-group signIn-input">
           <input
             type={isShowPassword ? "text" : "password"}
             name="password"
@@ -75,14 +75,14 @@ const SignIn = () => {
         <div className="btn-group">
           <button
             type="submit"
-            className="btn btn-signUp btn-primary"
+            className="btn btn-signIn btn-primary"
             onSubmit={(e)=>handleSubmit(e)}
           >
             Sign in
           </button>
         </div>
       </form>
-      <div className="social-signUp">
+      <div className="social-signIn">
         <a href="#" className="social-link">
           <i className="fab fa-facebook-f social-icon facebook"></i>
           <span className="social-text">Facebook</span>

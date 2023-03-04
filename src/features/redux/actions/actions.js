@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { auth } from "../../../firebase/firebase";
 import * as types from "./actionTypes";
 
@@ -30,6 +30,20 @@ const signInFail = (error) => ({
   type: types.SIGNIN_FAIL,
   payload: error,
 });
+//SIGNOUT
+const signOutStart = () => ({
+  type: types.SIGNOUT_START,
+});
+
+const signOutSuccess = (user) => ({
+  type: types.SIGNOUT_SUCCESS,
+  payload: user,
+});
+
+const signOutFail = (error) => ({
+  type: types.SIGNOUT_FAIL,
+  payload: error,
+});
 
 export const signUpInitial = (email, passwordOne, fullname) => {
   return function (dispatch) {
@@ -47,6 +61,7 @@ export const signUpInitial = (email, passwordOne, fullname) => {
       .catch((error) => dispatch(signUpFail(error.message)));
   };
 };
+
 export const signInInitial = (email, password) => {
   return function (dispatch) {
     dispatch(signInStart());
@@ -55,5 +70,16 @@ export const signInInitial = (email, password) => {
         dispatch(signInSuccess(user));
       })
       .catch((error) => dispatch(signInFail(error.message)));
+  };
+};
+
+export const signOutInitial = () => {
+  return function (dispatch) {
+    dispatch(signOutStart());
+    signOut(auth)
+    .then((resp) => {
+        dispatch(signOutSuccess());
+      })
+      .catch((error) => dispatch(signOutFail(error.message)));
   };
 };

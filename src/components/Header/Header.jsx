@@ -10,7 +10,8 @@ import * as ROUTES from "../../constants/routes";
 const Header = () => {
   const [navBarOpen, setnavBarOpen] = useState(false);
   const trains = useSelector(selectTrains);
-  console.log(trains);
+  
+  const {currentUser}=useSelector((state)=>state.user)
   
   const handleShowHideNavBar = (e) =>{
     setnavBarOpen(!navBarOpen)
@@ -31,7 +32,7 @@ const Header = () => {
         <Link className="btn" href="">
           Shop
         </Link>
-        <Link className="btn" to={ROUTES.SIGNUP}>
+        <Link className="btn" to={currentUser?(ROUTES.USER):(ROUTES.SIGNIN)}>
           Account
         </Link>
         <Link className="btn" onClick={handleShowHideNavBar} >
