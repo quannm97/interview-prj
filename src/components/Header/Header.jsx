@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import {  useSelector } from "react-redux";
 import { Fade } from "react-reveal";
+import { Link } from "react-router-dom";
 import { selectTrains} from "../../features/trainSlice/trainSlice";
 import styles from "./Header.module.scss";
+import * as ROUTES from "../../constants/routes";
 
 
 const Header = () => {
@@ -26,15 +28,15 @@ const Header = () => {
         ))}
       </div>
       <div className={styles.rightMenu}>
-        <button className="btn" href="">
+        <Link className="btn" href="">
           Shop
-        </button>
-        <button className="btn" href="">
+        </Link>
+        <Link className="btn" to={ROUTES.SIGNUP}>
           Account
-        </button>
-        <button className="btn" onClick={handleShowHideNavBar} >
+        </Link>
+        <Link className="btn" onClick={handleShowHideNavBar} >
           Menu
-        </button>
+        </Link>
       </div>
       <Fade right>
       <div className={navBarOpen? ` ${styles.navBarWraper}`:`d-none`} >

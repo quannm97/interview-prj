@@ -1,63 +1,88 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import * as ROUTES from '../../constants/routes.js';
+import { signInInitial } from '../../features/redux/actions/actions';
+
 
 const SignIn = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [isShowPassword, setIsShowPassword] = useState(false);
+  const [state,setState]= useState({
+    email:"",
+    password:"",
+    isShowPassword:false
+  })
 
+  const {email,password,isShowPassword}=state;
   const handleShowHidePassword = () => {
-    setIsShowPassword(!isShowPassword);
+    setState((prevState) => ({...prevState,isShowPassword: !prevState.isShowPassword}));
   };
+
+  const navigate=useNavigate();
+
+  const {currentUser}= useSelector((state)=> state.user)
+
+  useEffect(()=>{
+    if (currentUser) {
+      console.log(currentUser)
+      navigate(ROUTES.HOME);
+    }
+  },[currentUser,navigate])
+
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username,password);
+    if( !email || !password){
+      return;
+    }
+    dispatch(signInInitial(email,password));
+    // setState({email:"",password:""})
   };
   return (
-    <div className="login-background">
-    <div className="login-container">
+    <div className="signIn-background">
+    <div className="signUp-container">
       <div className="form-slogan">
-        <h2 className="col-12 text-login">Login to account</h2>
-        <p className="col-12 login-slogan">
+        <h2 className="col-12 text-signUp">signUp to account</h2>
+        <p className="col-12 signUp-slogan">
           Key to sucess is the discepline and the method. One makes you a man
           and the other turn you into a Beast.
         </p>
       </div>
-      <form className="login-content" onSubmit={handleSubmit}>
-        <div className="col-12 form-group login-input">
+      <form className="signUp-content" onSubmit={handleSubmit}>
+        <div className="col-12 form-group signUp-input">
           <input
             type="text"
-            name="username"
-            id="username"
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
+            name="email"
+            id="email"
+            onChange={(e) => setState({...state,[e.target.name]:e.target.value})}
+            value={email}
             placeholder="E-mail Address"
             className="form-control"
           />
         </div>
-        <div className="col-12 form-group login-input">
+        <div className="col-12 form-group signUp-input">
           <input
             type={isShowPassword ? "text" : "password"}
             name="password"
             id="password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setState({...state,[e.target.name]:e.target.value})}
             value={password}
             placeholder="Password"
             className="form-control"
           />
-          <i className={isShowPassword ?'fas fa-eye social-icon':'fas fa-eye-slash social-icon'} onClick={(e)=>handleShowHidePassword(e)}></i>
+          <i className={isShowPassword ?'fas fa-eye social-icon':'fas fa-eye-slash social-icon'} onClick={handleShowHidePassword}></i>
         </div>
         <div className="btn-group">
           <button
             type="submit"
-            className="btn btn-login btn-primary"
-            onSubmit={handleSubmit}
+            className="btn btn-signUp btn-primary"
+            onSubmit={(e)=>handleSubmit(e)}
           >
-            Login
+            Sign in
           </button>
         </div>
       </form>
-      <div className="social-login">
+      <div className="social-signUp">
         <a href="#" className="social-link">
           <i className="fab fa-facebook-f social-icon facebook"></i>
           <span className="social-text">Facebook</span>

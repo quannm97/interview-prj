@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import {  useNavigate } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes.js';
+import { signUpInitial } from '../../features/redux/actions/actions.js';
 
 const SignUp = () => {
   const INITIAL_STATE = {
@@ -11,6 +13,7 @@ const SignUp = () => {
     error: null,
   };
   const [formData, setFormData] = useState({ ...INITIAL_STATE });
+  
   const [isShowPassword, setIsShowPassword] = useState("");
   
   const { currentUser } = useSelector( state => state.user)
@@ -21,7 +24,14 @@ const SignUp = () => {
   formData.fullname ===''
   ;
 
+  const navigate = useNavigate();
   
+  // useEffect(()=>{
+  //   if (currentUser) {
+  //     navigate(ROUTES.HOME);
+  //   }
+  // },[currentUser,navigate])
+
 const handleInputChange = (e) => {
   setFormData({ ...formData, [e.target.name]: e.target.value });
 };
@@ -30,8 +40,17 @@ const handleShowHidePassword = () => {
   setIsShowPassword(!isShowPassword);
 };
 
+const {email, fullname, passwordOne,passwordTwo,error}=formData;
+
+const dispatch= useDispatch();
+
 const handleSubmit = (e) => {
   e.preventDefault();
+  if (passwordOne!==passwordTwo) {
+    return;
+  }
+  dispatch(signUpInitial(email,passwordOne,fullname));
+  // setFormData({email:"",fullname:"",passwordOne:"",passwordTwo:"",})
 }
   return (
     <div className="signup-background">

@@ -8,16 +8,23 @@ import Home from "../Home/Home";
 import SignUp from "../../pages/SignUp/SignUp";
 import { Route, Routes } from "react-router-dom";
 import * as ROUTES from '../../constants/routes';
+import UserRoute from "../Loading/UserRoute";
+import SignIn from "../../pages/SignIn/SignIn";
 const App = () => {
   return (
-    <div>
+    
       
+
       <Routes>
-      <Route exact path={ROUTES.LANDING} element = {<Home/>}/>
-      <Route path={ROUTES.SIGNUP} component = {<SignUp/>}/>
+      <Route exact path={ROUTES.LANDING} element = {<UserRoute/>}/>
+        <Route exact path={ROUTES.HOME} element = {<Home/>}/>
+      
+      <Route path={ROUTES.SIGNUP} element = {<SignUp/>}/>
+      <Route path={ROUTES.SIGNIN} element = {<SignIn/>}/>
       </Routes>
       
-    </div>
+      
+   
   );
 };
 
