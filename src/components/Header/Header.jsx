@@ -20,12 +20,12 @@ const Header = () => {
     
 
     <div className={styles.wraper}>
-      <a href="#">
+      <button href="#">
         <img src="/LogoMakr2.png" alt="" />
-      </a>
+      </button>
       <div className={styles.menu} >
         {trains && trains.map((train,index)=>(
-          <a key={index} className="btn" href="#">{train}</a>
+          <button key={index} className="btn" href="#">{train}</button>
         ))}
       </div>
       <div className={styles.rightMenu}>
@@ -43,28 +43,28 @@ const Header = () => {
       <div className={navBarOpen? ` ${styles.navBarWraper}`:`d-none`} >
         <div className={`${styles.navBar}`}>
           <li>
-            <a href="#">Used Inventory</a>
+            <button href="#">Used Inventory</button>
           </li>
           <li>
-            <a href="#">Roadmap</a>
+            <button href="#">Roadmap</button>
           </li>
           <li>
-            <a href="#">Achivement</a>
+            <button href="#">Achivement</button>
           </li>
           <li>
-            <a href="#">Inventory</a>
+            <button href="#">Inventory</button>
           </li>
           <li>
-            <a href="#">Trade</a>
+            <button href="#">Trade</button>
           </li>
           <li>
-            <a href="#">Equipment</a>
+            <button href="#">Equipment</button>
           </li>
           <li>
-            <a href="#">Cart</a>
+            <button href="#">Cart</button>
           </li>
           <li>
-            <a href="#">Test</a>
+            <button href="#">Test</button>
           </li>
           
         </div>
