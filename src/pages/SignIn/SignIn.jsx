@@ -83,23 +83,23 @@ const SignIn = () => {
         </div>
       </form>
       <div className="social-signIn">
-        <a href="#" className="social-link">
+        <button href="#" className="social-link">
           <i className="fab fa-facebook-f social-icon facebook"></i>
           <span className="social-text">Facebook</span>
-        </a>
-        <a href="#" className="social-link">
+        </button>
+        <button href="#" className="social-link">
           <i className="fab fa-google-plus-g social-icon google"></i>
           <span className="social-text">Google</span>
-        </a>
-        <a href="#" className="social-link">
+        </button>
+        <button href="#" className="social-link">
           <i className="fab fa-linkedin-in social-icon linkendin"></i>
           <span className="social-text">Linkendin</span>
-        </a>
+        </button>
       </div>
       <div className="other-form">
 
-      <a className="link-text" href='' >Sign up</a>
-      <a className="link-text">Forget Password</a>
+      <button className="link-text" href='' >Sign up</button>
+      <button className="link-text">Forget Password</button>
       </div>
     </div>
   </div>
