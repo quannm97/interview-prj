@@ -17,7 +17,6 @@ const userReducer = (state = initialState, action) => {
       };
     case types.SIGNUP_SUCCESS:
     case types.SIGNIN_SUCCESS:
-    case types.SIGNOUT_SUCCESS:
       console.log(action.payload);
       return {
         ...state,

@@ -6983,8 +6983,7 @@ textarea.form-control-lg {
   position: fixed !important;
 }
 
-.position-sticky {
-}
+
 
 .top-0 {
   top: 0 !important;
@@ -8123,14 +8122,11 @@ textarea.form-control-lg {
   background-image: var(--bs-gradient) !important;
 }
 
-.user-select-all {
-}
 
-.user-select-auto {
-}
 
-.user-select-none {
-}
+
+
+
 
 .pe-none {
   pointer-events: none !important;
