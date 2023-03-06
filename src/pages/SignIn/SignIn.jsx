@@ -98,7 +98,7 @@ const SignIn = () => {
       </div>
       <div className="other-form">
 
-      <button className="link-text" href='' >Sign up</button>
+      <a className="link-text" href={ROUTES.SIGNUP} >Sign up</a>
       <button className="link-text">Forget Password</button>
       </div>
     </div>
