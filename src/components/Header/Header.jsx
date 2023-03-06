@@ -20,9 +20,9 @@ const Header = () => {
     
 
     <div className={styles.wraper}>
-      <button href="#">
+      <a href={ROUTES.HOME}>
         <img src="/LogoMakr2.png" alt="" />
-      </button>
+      </a>
       <div className={styles.menu} >
         {trains && trains.map((train,index)=>(
           <button key={index} className="btn" href="#">{train}</button>

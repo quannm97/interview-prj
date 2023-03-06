@@ -12,7 +12,7 @@
   .menu {
     display: flex;
     align-items: center;
-    a {
+    a,button {
       font-weight: 600;
       text-transform: uppercase;
       padding: 0 10px;
@@ -21,7 +21,7 @@
       color: white;
       
     }
-    a:hover{
+    a,button:hover{
       color: #cba95f;
     }
     @media (max-width: 768px) {
@@ -63,7 +63,7 @@
       li{
         display: flex;
         align-items: center;
-        a{
+        a,button{
           padding: 5px 8px;
           margin-bottom: 6px;
           text-decoration: none;
@@ -71,7 +71,7 @@
           font-size: 18px;
           font-weight: 600;
         }
-        a:hover{
+        a,button:hover{
           border: none;
           opacity: 0.8;
         }
