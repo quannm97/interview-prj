@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import {  useNavigate } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes.js';
@@ -26,11 +26,11 @@ const SignUp = () => {
 
   const navigate = useNavigate();
   
-  // useEffect(()=>{
-  //   if (currentUser) {
-  //     navigate(ROUTES.HOME);
-  //   }
-  // },[currentUser,navigate])
+  useEffect(()=>{
+    if (currentUser) {
+      navigate(ROUTES.HOME);
+    }
+  },[currentUser,navigate])
 
 const handleInputChange = (e) => {
   setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -40,7 +40,7 @@ const handleShowHidePassword = () => {
   setIsShowPassword(!isShowPassword);
 };
 
-const {email, fullname, passwordOne,passwordTwo,error}=formData;
+const {email, fullname, passwordOne,passwordTwo}=formData;
 
 const dispatch= useDispatch();
 
@@ -140,18 +140,18 @@ const handleSubmit = (e) => {
         Or sign up with:
       </div>
       <div className="social-signup">
-        <a href="#" className="social-link">
+        <button href="#" className="social-link">
           <i className="fab fa-facebook-f social-icon facebook"></i>
           <span className="social-text">Facebook</span>
-        </a>
-        <a href="#" className="social-link">
+        </button>
+        <button href="#" className="social-link">
           <i className="fab fa-google-plus-g social-icon google"></i>
           <span className="social-text">Google</span>
-        </a>
-        <a href="#" className="social-link">
+        </button>
+        <button href="#" className="social-link">
           <i className="fab fa-linkedin-in social-icon linkendin"></i>
           <span className="social-text">Linkendin</span>
-        </a>
+        </button>
       </div>
       <div className="other-form">
         <a className="link-text" href={ROUTES.SIGNIN}>
