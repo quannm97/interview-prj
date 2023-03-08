@@ -44,8 +44,8 @@ const SignIn = () => {
       <div className="form-slogan">
         <h2 className="col-12 text-signIn">Sign in to account</h2>
         <p className="col-12 signIn-slogan">
-          Key to sucess is the discepline and the method. One makes you a man
-          and the other turn you into a Beast.
+          Default email:admin1@email.com
+          Default password:123456
         </p>
       </div>
       <form className="signIn-content" onSubmit={handleSubmit}>

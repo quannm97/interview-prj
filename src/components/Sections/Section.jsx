@@ -10,8 +10,6 @@ const Section = ({
   rightBtnText,
 }) => {
   return (
-    
-
     <section
       className={styles.wraper}
       style={{ backgroundImage: `url(${backgroundImg})` }}
@@ -26,23 +24,21 @@ const Section = ({
           </div>
         </Fade>
         <div className={styles.contentDown}>
-          
-            <div className={styles.sectionBtnGroup}>
-              <button className={`btn rounded-pill ${styles.btnLeft} `}>
-                {leftBtnText}
-              </button>
-              <button className={`btn rounded-pill  ${styles.btnRight} `}>
-                {rightBtnText}
-              </button>
-            </div>
-          
+          <div className={styles.sectionBtnGroup}>
+            <button className={`btn rounded-pill ${styles.btnLeft} `}>
+              {leftBtnText}
+            </button>
+            <button className={`btn rounded-pill  ${styles.btnRight} `}>
+              {rightBtnText}
+            </button>
+          </div>
+
           <span>
             <i className={`fas fa-chevron-down ${styles.downArrow}`}></i>
           </span>
         </div>
       </div>
     </section>
-   
   );
 };
 
