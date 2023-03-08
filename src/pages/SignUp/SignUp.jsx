@@ -68,7 +68,7 @@ const handleSubmit = (e) => {
             name="fullname"
             id="fullname"
             onChange={(e) => handleInputChange(e)}
-            value={formData.fullname}
+            value={fullname}
             placeholder="Full name"
             className="form-control"
           />
@@ -79,7 +79,7 @@ const handleSubmit = (e) => {
             name="email"
             id="email"
             onChange={(e) => handleInputChange(e)}
-            value={formData.email}
+            value={email}
             placeholder="E-mail Address"
             className="form-control"
           />
@@ -91,7 +91,7 @@ const handleSubmit = (e) => {
             name="passwordOne"
             id="passwordOne"
             onChange={(e) => handleInputChange(e)}
-            value={formData.passwordOne}
+            value={passwordOne}
             placeholder="Password"
             className="form-control"
           />

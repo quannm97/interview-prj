@@ -38,7 +38,6 @@ const Header = () => {
         <Link className="btn" onClick={handleShowHideNavBar} >
           Menu
         </Link>
-      </div>
       <Fade right>
       <div className={navBarOpen? ` ${styles.navBarWraper}`:`d-none`} >
         <div className={`${styles.navBar}`}>
@@ -73,6 +72,7 @@ const Header = () => {
         </div>
       </div>
       </Fade>
+      </div>
     </div>
    
   );

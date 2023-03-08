@@ -9,7 +9,6 @@ const trainSlide = createSlice({
 })
 
 export const selectTrains = state => {
-    console.log(state.train.trains) 
     return state.train.trains};
 
 const trainReducer = trainSlide.reducer;

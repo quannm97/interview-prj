@@ -9,7 +9,10 @@ const Home = () => {
 
   return (
       <div className={styles.wraper}>
+        <div className="position-fixed">
+
         <Header></Header>
+        </div>
         <Section title="One"
         description="One of the few things you completely control on this World is your mind"
         backgroundImg='/arrowPushUp.jpg'

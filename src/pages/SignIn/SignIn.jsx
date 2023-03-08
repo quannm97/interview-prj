@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes.js';
-import { signInInitial } from '../../features/redux/actions/actions';
+import { googleSignInInitial, signInInitial } from '../../features/redux/actions/actions';
 
 
 const SignIn = () => {
@@ -38,13 +38,19 @@ const SignIn = () => {
     dispatch(signInInitial(email,password));
     // setState({email:"",password:""})
   };
+
+  const handleGoogleSignIn=(e) =>{
+    e.preventDefault();
+    dispatch(googleSignInInitial());
+  }
+
   return (
     <div className="signIn-background">
     <div className="signIn-container">
       <div className="form-slogan">
         <h2 className="col-12 text-signIn">Sign in to account</h2>
         <p className="col-12 signIn-slogan">
-          Default email:admin1@email.com
+          Default email:admin@email.com
           Default password:123456
         </p>
       </div>
@@ -87,7 +93,7 @@ const SignIn = () => {
           <i className="fab fa-facebook-f social-icon facebook"></i>
           <span className="social-text">Facebook</span>
         </button>
-        <button href="#" className="social-link">
+        <button className="social-link" onClick={handleGoogleSignIn}>
           <i className="fab fa-google-plus-g social-icon google"></i>
           <span className="social-text">Google</span>
         </button>

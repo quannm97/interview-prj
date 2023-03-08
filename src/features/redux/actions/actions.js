@@ -1,5 +1,5 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
-import { auth } from "../../../firebase/firebase";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { auth, googleAuthProvider } from "../../../firebase/firebase";
 import * as types from "./actionTypes";
 
 //SIGN IP
@@ -44,12 +44,31 @@ const signOutFail = (error) => ({
   type: types.SIGNOUT_FAIL,
   payload: error,
 });
+//SET_USER
 
+export const setUser=(user)=>({
+  type: types.SET_USER,
+  payload: user,
+})
+//GOOGLE_SIGN_IN
+const googleSignInStart = () => ({
+  type: types.GOOGLE_SIGNIN_START,
+});
+
+const googleSignInSuccess = (user) => ({
+  type: types.GOOGLE_SIGNIN_SUCCESS,
+  payload: user,
+});
+
+const googleSignInFail = (error) => ({
+  type: types.GOOGLE_SIGNIN_FAIL,
+  payload: error,
+});
 export const signUpInitial = (email, passwordOne, fullname) => {
   return function (dispatch) {
     dispatch(signUpStart());
     
-      createUserWithEmailAndPassword(auth,email, passwordOne )
+      createUserWithEmailAndPassword(auth,email, passwordOne,fullname )
       .then(({ user }) => {
         updateProfile({
           displayName: fullname,  
@@ -81,5 +100,16 @@ export const signOutInitial = () => {
         dispatch(signOutSuccess());
       })
       .catch((error) => dispatch(signOutFail(error.message)));
+  };
+};
+
+export const googleSignInInitial = () => {
+  return function (dispatch) {
+    dispatch(googleSignInStart());
+    signInWithPopup(auth,googleAuthProvider )
+    .then(({ user }) => {
+        dispatch(googleSignInSuccess(user));
+      })
+      .catch((error) => dispatch(googleSignInFail(error.message)));
   };
 };
