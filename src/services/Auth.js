@@ -1,7 +1,7 @@
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setUser } from "../features/redux/actions/actions";
+import { setUser } from "../features/redux/actions/formActions";
 import { auth } from "../firebase/firebase";
 
 export const listenForAuthChanges =(dispatch) =>{

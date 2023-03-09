@@ -1,7 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Exercise from "../../components/ExerciseComponents/Exercise/Exercise";
+import ExerciseList from "../../components/ExerciseComponents/ExerciseList";
+import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import { signOutInitial } from "../../features/redux/actions/actions";
+import { signOutInitial } from "../../features/redux/actions/formActions";
 import styles from "./User.module.scss"
 const User = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -43,8 +46,15 @@ const User = () => {
             </div>
           </div>
         </div>
-        <div className="right"></div>
+        <div className="right">
+          <div>
+            <Exercise></Exercise>
+          </div>
+        </div>
       </section>
+      <>
+      <Footer/>
+      </>
     </div>
   );
 };

@@ -1,4 +1,10 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
 import { auth, googleAuthProvider } from "../../../firebase/firebase";
 import * as types from "./actionTypes";
 
@@ -46,10 +52,10 @@ const signOutFail = (error) => ({
 });
 //SET_USER
 
-export const setUser=(user)=>({
+export const setUser = (user) => ({
   type: types.SET_USER,
   payload: user,
-})
+});
 //GOOGLE_SIGN_IN
 const googleSignInStart = () => ({
   type: types.GOOGLE_SIGNIN_START,
@@ -65,30 +71,41 @@ const googleSignInFail = (error) => ({
   payload: error,
 });
 export const signUpInitial = (email, passwordOne, fullname) => {
+  const password=passwordOne;
+  const displayName=fullname;
   return function (dispatch) {
+    console.log(email, password, displayName);
     dispatch(signUpStart());
-    
-      createUserWithEmailAndPassword(auth,email, passwordOne,fullname )
-      .then(({ user }) => {
-        updateProfile({
-          displayName: fullname,  
-          password:passwordOne       
-        });
-        
-        dispatch(signUpSuccess(user));
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user=userCredential.user;
+          updateProfile(user, {
+            displayName,
+            uid:user.uid,
+            accessToken:user.accessToken,
+          })
+
+        dispatch(signUpSuccess(userCredential.user));
       })
-      .catch((error) => dispatch(signUpFail(error.message)));
+      .catch((error) => {
+        dispatch(signUpFail(error.message))
+        alert(error.message)
+      });
   };
 };
 
 export const signInInitial = (email, password) => {
   return function (dispatch) {
     dispatch(signInStart());
-    signInWithEmailAndPassword(auth,email, password )
-    .then(({ user }) => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then(({ user }) => {
         dispatch(signInSuccess(user));
       })
-      .catch((error) => dispatch(signInFail(error.message)));
+      .catch((error) => {
+        dispatch(signInFail(error.message))
+        alert(error.message)
+      });
   };
 };
 
@@ -96,18 +113,21 @@ export const signOutInitial = () => {
   return function (dispatch) {
     dispatch(signOutStart());
     signOut(auth)
-    .then((resp) => {
+      .then((resp) => {
         dispatch(signOutSuccess());
       })
-      .catch((error) => dispatch(signOutFail(error.message)));
+      .catch((error) => {
+        dispatch(signOutFail(error.message))
+        alert(error.message)
+      });
   };
 };
 
 export const googleSignInInitial = () => {
   return function (dispatch) {
     dispatch(googleSignInStart());
-    signInWithPopup(auth,googleAuthProvider )
-    .then(({ user }) => {
+    signInWithPopup(auth, googleAuthProvider)
+      .then(({ user }) => {
         dispatch(googleSignInSuccess(user));
       })
       .catch((error) => dispatch(googleSignInFail(error.message)));

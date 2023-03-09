@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes.js';
-import { googleSignInInitial, signInInitial } from '../../features/redux/actions/actions';
+import { googleSignInInitial, signInInitial } from '../../features/redux/actions/formActions.js';
 
 
 const SignIn = () => {
