@@ -17,5 +17,14 @@ export const excerciseReducer = (state = initialState, action ) => {
             
     }
 
-}
-;
+};
+
+export const selectedExerciseReducer = (state={},action) =>{
+    switch (action.type) {
+        case types.SELECTED_EXERCISE:
+            return {...state,exercise:action.payload};
+    
+        default:
+            return state;
+    }
+} 

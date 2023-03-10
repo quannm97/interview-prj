@@ -9,7 +9,7 @@ import * as ROUTES from "../../constants/routes";
 
 const Header = () => {
   const [navBarOpen, setnavBarOpen] = useState(false);
-  const trains = useSelector(selectTrains);
+  // const trains = useSelector(selectTrains);
   
   const {currentUser}=useSelector((state)=>state.user)
   
@@ -23,11 +23,11 @@ const Header = () => {
       <a href={ROUTES.HOME}>
         <img src="/LogoMakr2.png" alt="" />
       </a>
-      <div className={styles.menu} >
+      {/* <div className={styles.menu} >
         {trains && trains.map((train,index)=>(
           <button key={index} className="btn" href="#">{train}</button>
         ))}
-      </div>
+      </div> */}
       <div className={styles.rightMenu}>
         <Link className="btn" href="">
           Shop

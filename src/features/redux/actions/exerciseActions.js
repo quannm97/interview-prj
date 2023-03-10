@@ -1,16 +1,16 @@
 import * as types from "./actionTypes";
 
 
-export const setExcercises = (excercises) => {
+export const setExcercises = (exercises) => {
     return {
         type: types.SET_EXERCISES,
-        payload: excercises
+        payload: exercises
     };
 }
 
-export const selectedExcercise = (excercise) => {
+export const selectedExcercise = (selecteExercise) => {
     return {
-        type: types.SET_EXERCISES,
-        payload: excercise
+        type: types.SELECTED_EXERCISE,
+        payload: selecteExercise
     };
 }
